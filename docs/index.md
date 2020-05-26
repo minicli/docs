@@ -1,228 +1,33 @@
-# Getting Started
+# About
 
-Minicli is a minimalist framework for building CLI-centric PHP applications.
+Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies.
 
-## Creating a Project
+## Dependency-free: What Does it Mean
 
-You'll need `php-cli` and [Composer](https://getcomposer.org/) to get started.
+What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested user-land dependencies. The basic `minicli/minicli` package has only **testing** dependencies (only installed when you clone Minicli for development), and a couple system requirements:
 
-Create a new project with:
+- PHP >= 7.2
+- `ext-readline` for obtaining user input
 
-```shell
-composer create-project --prefer-dist minicli/application myapp
-```
+Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
 
-Once the installation is finished, you can run `minicli` with:
+## Getting Started
 
-```shell
-cd myapp
-./minicli
-```
+There are mainly two ways to get started: you can choose to create a project from scratch, or you can use our application repository template, which sets up a minimal structure with Command Namespaces and Controllers.
 
-This will show you the default app signature.
+Both methods are explained in detail in the [Getting Started Guide](/01-getting_started).
+## Building Minicli
 
-The `help` command that comes with minicli, defined in `app/Command/Help/DefaultController.php`, auto-generates a tree of available commands:
+The following tutorials on [dev.to](https://dev.to/erikaheidi) compose a series named "Building Minicli", where we created the first version of `minicli` from scratch:
 
-```shell
-./minicli help
-```
+ - Part 1: [Bootstrapping a CLI PHP Application in Vanilla PHP](https://dev.to/erikaheidi/bootstrapping-a-cli-php-application-in-vanilla-php-4ee) [ [minicli v.0.1.0](https://github.com/erikaheidi/minicli/tree/0.1.0) ]
+ - Part 2: [Building minicli: Implementing Command Controllers](https://dev.to/erikaheidi/php-in-the-command-line-implementing-command-controllers-13lh) [ [minicli v.0.1.2](https://github.com/erikaheidi/minicli/tree/0.1.2) ]
+ - Part 3: [Building minicli: Autoloading Command Namespaces](https://dev.to/erikaheidi/building-minicli-autoloading-command-namespaces-3ljm) [ [minicli v.0.1.3](https://github.com/erikaheidi/minicli/tree/0.1.3) ]
+ - Part 4: [Introducing minicli: a microframework for CLI-centric PHP applications](https://dev.to/erikaheidi/introducing-minicli-a-microframework-for-cli-centric-php-applications-44ik)
 
-```
-Available Commands
+!!! note
+    Minicli has evolved a lot since that series was initially written, but that was the base for what Minicli is today.
 
-help
-└──test
+## Created with Minicli
 
-```
-
-The `help test` command, defined in `app/Command/Help/TestController.php`, shows an echo test of parameters:
-
-```
-./minicli help test user=erika name=value
-```
-
-```
-Hello, erika!
-
-Array
-(
-    [user] => erika
-    [name] => value
-)
-```
-
-## Creating your First Command
-
-The simplest way to create a command is to edit the `minicli` script and define a new command as an anonymous function within the Application via `registerCommand`:
-
-```php
-#!/usr/bin/php
-<?php
-
-if (php_sapi_name() !== 'cli') {
-    exit;
-}
-
-require __DIR__ . '/vendor/autoload.php';
-
-use Minicli\App;
-use Minicli\Command\CommandCall;
-
-$app = new App();
-$app->setSignature('./minicli mycommand');
-
-$app->registerCommand('mycommand', function(CommandCall $input) {
-    echo "My Command!";
-
-    var_dump($input);
-});
-
-$app->runCommand($argv);
-```
-
-You could then execute the new command with:
-
-```shell
-./minicli mycommand
-```
-
-## Using Command Controllers
-
-To organize your commands into controllers, you'll need to use [Command Namespaces](/command_namespaces#). 
-
-Let's say you want to create a command named  `hello`. You should start by creating a new directory under the `app/Commands` folder:
-
-```shell
-mkdir app/Commands/Hello
-```
-
-Now `Hello` is your Command Namespace. Inside that directory, you'll need to create at least one Command Controller. You can start with the `DefaultController`, which will be called by default when no subcommand is provided.
-
-This is how this `DefaultController` class could look like:
-
-```php
-<?php
-
-namespace App\Command\Hello;
-
-use Minicli\Command\CommandController;
-
-class DefaultController extends CommandController
-{
-    public function handle()
-    {       
-        $this->getPrinter()->display("Hello World!");
-    }
-}
-```
-
-This command would be available as:
-
-```shell
-./minicli hello
-```
-
-Becase a subcommand was not provided, it is inferred that you want to execute the **default** command. This command can also be invoked as:
-
-```shell
-./minicli hello default
-```
-
-Any other Command Controller placed inside the `Hello` namespace will be available in a similar way. For instance, let's say you want to create a new subcommand like `hello caps`.
-
-You would then create a new Command Controller named `CapsController`:
-
-```php
-<?php
-
-namespace App\Command\Hello;
-
-use Minicli\Command\CommandController;
-
-class CapsController extends CommandController
-{
-    public function handle()
-    {       
-        $this->getPrinter()->display("HELLO WORLD!");
-    }
-}
-```
-
-And this new command would be available as:
-
-```shell
-./minicli hello caps
-```
-
-## Working with Parameters
-
-Minicli uses a few conventions for command call arguments:
-
-* Args / Arguments: Parsed arguments - anything that comes from $argv that is not a `key=value` and not a `--flag`.
-* Params / Parameters: Key-value pairs such as `user=erika`
-* Flags: single arguments prefixed with `--` such as `--update`
-
-The parent `CommandController` class exposes a few handy methods to work with the command call parameters.
-For instance, let's say you want to update the previous `hello` command to use an optional parameter to tell the name of the person that will be greeted.
-
-```php
-<?php
-
-namespace App\Command\Hello;
-
-use Minicli\Command\CommandController;
-use Minicli\Input;
-
-class HelloController extends CommandController
-{
-    public function handle()
-    {       
-        $name = $this->hasParam('user') ? $this->getParam('user') : 'World';
-        $this->getPrinter()->display(sprintf("Hello, %s!", $name));
-    }
-}
-```
-
-Now, to use the custom version of the command, you'll need to run:
-
-```shell
-./minicli hello user=erika 
-```
-
-And you'll get the output:
-
-```shell
-Hello, erika!
-```
-
-### `CommandCall` Class Methods
-* `hasParam(string $key) : bool` - Returns true if a parameter exists.
-* `getParam(string $key) : string` - Returns a parameter, or null if its non existent.
-* `hasFlag(string $key) : bool` - Returns whether or not a flag was passed along in the command call.
-
-## Printing Output
-
-The `CliPrinter` class has shortcut methods to print messages with various colors and styles. 
-It comes with two bundled *themes*: `regular` and `unicorn`. This is set up within the App bootstrap config array, and by default it's configured to use the `regular` theme.
-
-```php
-    public function handle()
-    {       
-        $this->getPrinter()->info("Starting Minicli...");
-        if (!$this->hasParam('message')) {
-            $this->getPrinter()->error("Error: you must provide a message.");
-            exit;
-        }
-        
-        $this->getPrinter()->success($this->getParam('message'));
-    }
-```
-### `CliPrinter` Class Methods
-
-* `display(string $message) : void` - Displays a message wrapped in new lines.
-* `error(string $message) : void` - Displays an error message wrapped in new lines, using the current theme colors.
-* `success(string $message) : void` - Displays a success message wrapped in new lines, using the current theme colors.
-* `info(string $message) : void` - Displays an info message wrapped in new lines, using the current theme colors.
-* `newline() : void` - Prints a new line.
-* `format(string $message, string $style="default") : string` - Returns a formatted string with the desired style.
-* `out(string $message) : void` - Prints a message.
+- [Dolphin](https://github.com/do-community/dolphin) - a CLI tool for managing DigitalOcean servers with Ansible.

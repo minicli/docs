@@ -1,2 +1,17 @@
 site_name: Minicli 2
-theme: material
+theme:
+  name: material
+  palette:
+    primary: purple
+    accent: purple
+  icon:
+    logo: material/console
+    repo: fontawesome/brands/git-alt
+repo_name: minicli/minicli
+repo_url: https://github.com/minicli/minicli
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
