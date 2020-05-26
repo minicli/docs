@@ -1,6 +1,9 @@
 # About
 
-Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies.
+Minicli is a minimalist, dependency-free framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output.
+
+![Minicli Screenshot](images/dolphin_screenshot.png)
+_Example of output produced by an application built with Minicli_
 
 ## Dependency-free: What Does it Mean
 
