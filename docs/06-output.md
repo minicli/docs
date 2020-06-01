@@ -30,27 +30,40 @@ Example of output produced by these methods:
 
 ![Screenshot output test](images/output_styles.png)
 
-### Other Print Helpers
-
-To output content without predefined styles, you can use:
+### Other Print Methods
 
 - `out($message, $style = null)` - Outputs a message and optionally sets a style. This won't include newlines.
 - `rawOutput($message)` - Outputs a message without newlines or formatting.
-
-
-Other helper methods:
 - `newline()` - Prints a newline / line break.
-- `printTable(array $table)` - Helper method that uses the `TableHelper` to format and print a table. The table must be provided as an array where each item is a row of the table, also in array format:
+- `printTable(array $table)` - Helper method that uses the `TableHelper` to format and print a table.
+
+### Extended Styles
+
+The `DefaultTheme` theme contains additional styles that can be used directly with the `out` method:
 
 
+- `bold`
+- `italic`
+- `dim`
+- `underline`
+- `inverted`
 
-## Filters and Adapters
+![Screenshot of extended styles output](images/screenshot_extended_styles.png)
 
+Usage example:
 
-The `OutputHandler` has two different components that define how the output is handled: **Output Filters** and **Printer Adapters**.
+```php
+<?php
+...
+    public function handle()
+    {   
+        $this->getPrinter()->newline();    
+        $this->getPrinter()->out("Hello World!", 'underline');
+        $this->getPrinter()->newline(); 
+    }
+```
 
-- Output Filters: define **how** the message is printed.
-- Printer Adapters: define **where** the message is printed.
+The same usage applies for creating custom styles within a [Custom Theme](/07-themes/).
 
-
-(TO BE CONTINUED...)
+!!!note
+    Remember that the `out` method doesn't wrap the content with newlines, so you'll have to use the `newline()` method to manually include your line breaks.
