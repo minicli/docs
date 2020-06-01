@@ -1,3 +1,22 @@
+<p align="center">
+<img src="https://minicli.dev/images/minicli_logo_term_pink.png" align="center" alt="logo" title="Minicli logo" alt="Minicli Logo" width="200">
+</p>
+
+<p align="center">
+    <a href="//packagist.org/packages/minicli/minicli">
+        <img src="https://poser.pugx.org/minicli/minicli/v" alt="Latest Stable Version" title="Latest Stable Version">
+    </a>
+    <a href="//packagist.org/packages/minicli/minicli">
+        <img src="https://poser.pugx.org/minicli/minicli/downloads" alt="Total Downloads" title="Total Downloads">
+    </a>
+    <a href="//packagist.org/packages/minicli/minicli">
+        <img src="https://poser.pugx.org/minicli/minicli/license" alt="License" title="License">
+    </a>
+    <a href="https://docs.minicli.dev/en/latest/?badge=latest">
+        <img src="https://readthedocs.org/projects/minicliphp/badge/?version=latest" alt="Documentation Status" title="Documentation Status">
+    </a>
+</p>
+
 # Home
 Minicli is a minimalist, dependency-free framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output.
 
