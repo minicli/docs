@@ -2,7 +2,7 @@
 
 Official documentation repository for [minicli/minicli](https://github.com/minicli/minicli).
 
-The documentation at [https://docs.minicli.dev](docs.minicli.dev) lives in the `docs` folder of this repository. The `landing` folder contains the landing page at [https://minicli.dev](minicli.dev).
+The documentation at [docs.minicli.dev](https://docs.minicli.dev) lives in the `docs` folder of this repository. The `landing` folder contains the landing page at [minicli.dev](https://minicli.dev).
 
 ## Contributing
 
