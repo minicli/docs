@@ -49,3 +49,32 @@ class BlueTheme extends DefaultTheme
 ```
 
 User-defined themes only need to define styles which will override those in the default theme.
+
+## Theme screenshots
+The default Theme:
+
+![Screenshot default Theme](images/defaultTheme.png)
+
+The Unicorn Theme:
+
+![Screenshot unicorn Theme](images/unicornTheme.png)
+
+The matching method calls for the output:
+
+```
+      $app->getPrinter()->display("Hello World");
+      $app->getPrinter()->error("Hello World");
+      $app->getPrinter()->info("Hello World");
+      $app->getPrinter()->success("Hello World");
+      $app->getPrinter()->display("Hello World",true);
+      $app->getPrinter()->error("Hello World",true);
+      $app->getPrinter()->info("Hello World",true);
+      $app->getPrinter()->success("Hello World",true);
+      $app->getPrinter()->out("Hello World!\r\n", 'underline');
+      $app->getPrinter()->out("Hello World!\r\n", 'dim');
+      $app->getPrinter()->out("Hello World!\r\n", 'bold');
+      $app->getPrinter()->out("Hello World!\r\n", 'inverted');
+      $app->getPrinter()->out("Hello World!\r\n", 'italic');
+      ```
+
+
