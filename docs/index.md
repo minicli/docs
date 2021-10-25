@@ -20,14 +20,43 @@
 # Home
 Minicli is a minimalist, dependency-free framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output.
 
-![Minicli app example](images/screenshot_app.png)
+```php
+#!/usr/bin/php
+<?php
+
+if($php_sapi_name !== 'cli') {
+    exit;
+}
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Minicli\App;
+
+$app = new App([
+    'app_path' => __DIR__ . '/app/Command',
+    'theme' => '\Unicorn', 
+    'debug' => false,
+]);
+
+$app->registerCommand('test', function () use ($app) {
+    $app->getPrinter()->success('Hello World!' , false);
+    $app->getPrinter()->info('With Background!' , true);
+    $app->getPrinter()->error('Quitting!', false);
+});
+
+$app->runCommand($argv);
+```
+![image](./images/output_index.png "Image of a terminal with the output of the code above.")
+
 
 ## Dependency-free: What Does it Mean
 
-What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested user-land dependencies. The basic `minicli/minicli` package has only **testing** dependencies (only installed when you clone Minicli for development), and a couple system requirements:
+What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested user-land dependencies. The basic `minicli/minicli` package has only **testing** dependencies (only installed when you clone Minicli for development), and a single system requirement:
 
 - PHP >= 7.3
-- `ext-readline` for obtaining user input
+
+> Note: If you want to obtain user input, then the [`readline`](https://www.php.net/manual/en/function.readline.php) PHP extension is required as well.
+    
 
 Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
 
@@ -50,4 +79,6 @@ The following tutorials on [dev.to](https://dev.to/erikaheidi) compose a series 
 
 ## Created with Minicli
 
-- [Dolphin](https://github.com/do-community/dolphin) - a CLI tool for managing DigitalOcean servers with Ansible.
+- [Librarian](https://github.com/librarianphp/librarian) - A minimalist file-based CMS / markdown document indexer
+- [Dynacover](https://github.com/erikaheidi/dynacover) - Dynamic Twitter images and banners
+- [GDaisy](https://github.com/erikaheidi/gdaisy) - php-gd based image templates
