@@ -37,6 +37,39 @@ Example of output produced by these methods:
 - `newline()` - Prints a newline / line break.
 - `printTable(array $table)` - Helper method that uses the `TableHelper` to format and print a table.
 
+### Table Printing
+You can print tables with the TableHelper. Import the TableHelper class. Then create a TableHelper object and insert the
+array you want to construct. Add Headers if needed. With the getFormattedTable() method you receive a String. 
+
+```
+(...)
+use Minicli\Output\Helper\TableHelper;
+
+$app = new App();
+
+$app->setSignature('./minicli mycommand');
+
+$app->registerCommand('mycommand', function(CommandCall $input2) {
+
+    $cars = array (
+        array("Volvo",22,18),
+        array("BMW",15,13),
+        array("Saab",5,2),
+        array("Land Rover",17,15)
+      );
+
+    $headers=array("Marke","available","ordered");
+
+    $tableHelper=new TableHelper();
+    $tableHelper->addHeader($headers);
+    $tableHelper->__construct($cars);
+
+    echo $tableHelper->getFormattedTable()."\r\n";
+});
+
+$app->runCommand($argv);
+```
+
 ### Extended Styles
 
 The `DefaultTheme` theme contains additional styles that can be used directly with the `out` method:
