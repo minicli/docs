@@ -1,6 +1,12 @@
 # How to build a simple app pulling contents from Pokemon API
 In this example, we are going to build a simple app to show some info about a chosen Pokemon.
 
+To get started, you'll need:
+
+- php-cli
+- ext-curl
+- [Composer](https://getcomposer.org/)
+
 ## Creating a Simple App
 First, we need to create a new project using [Minicli template app](https://docs.minicli.dev/en/latest/01-getting_started/#creating-a-structured-app-using-the-application-template), using your terminal of choice, enter the following command:
 
