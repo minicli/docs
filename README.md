@@ -20,8 +20,10 @@ Although not necessary for contributing, in order to be able to run the document
 
 - Python 3
 - Pip
- 
-To install MKDocs on Ubuntu/Debian systems, run:
+
+#### Ubuntu/Debian systems
+
+Make sure you have python3 and pip installed:
 
 ```shell
 sudo apt install python3 python3-pip
@@ -49,7 +51,9 @@ This command will block your terminal, serving the documentation website locally
 
 You don't need to run the `build` command, since that is automatically run by Readthedocs when the main branch has new commits.
 
-To install MKDocs on macOS systems, make sure you have Homebrew installed:
+#### macOS systems
+
+Make sure you have Homebrew installed:
 
 ```shell
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -77,14 +81,4 @@ Then, install `mkdocs` and the `mkdocs-material` theme with:
 
 ```shell
 pip install mkdocs mkdocs-material
-```
-
-Check if `mkdocs` was successfully installed with:
-
-```shell
-mkdocs --version
-```
-
-```
-mkdocs, version 1.2.3 from /home/erika/.local/lib/python3.9/site-packages/mkdocs (Python 3.9)
 ```
