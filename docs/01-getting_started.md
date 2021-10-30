@@ -1,9 +1,10 @@
 # Getting Started
 
-Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies, and has only two requirements:
+Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies, and a single system requirement:
 
 - PHP 7.3+ (cli)
-- `ext-readline`
+
+> Note: If you want to obtain user input, then the [`readline`](https://www.php.net/manual/en/function.readline.php) PHP extension is required as well.
 
 Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
 
@@ -27,6 +28,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Minicli\App;
 use Minicli\Command\CommandCall;
+use Minicli\Exception\CommandNotFoundException;
 
 $app = new App();
 $app->setSignature('./minicli mycommand');
@@ -37,7 +39,11 @@ $app->registerCommand('mycommand', function(CommandCall $input) {
     var_dump($input);
 });
 
-$app->runCommand($argv);
+try {
+    $app->runCommand($argv);
+} catch (CommandNotFoundException $e) {
+    echo 'An error occurred running the command: ',  $e->getMessage(), "\n";
+}
 ```
 
 This script will set up a command called `mycommand`. To execute it, first make the file executable with:
