@@ -2,8 +2,9 @@
 
 Minicli supports the use of color themes to change the style of command line output. The following built-in themes are currently available:
 
-- Default
-- Unicorn
+- [Default](#default): the default theme.
+- [Unicorn](#unicorn): a more colorful theme.
+- [Dalton](#dalton): a color-blind friendly theme.
 
 To set the theme, pass in a configuration array with a `theme` value when initializing the application. Built-in themes need a leading `\` character:
 
@@ -58,11 +59,21 @@ User-defined themes only need to define styles which will override those in the 
 
 ### Default
 
+When in doubt, stick to the default.
+
 ![Screenshot default Theme](/images/themes-default.png)
 
 ### Unicorn
 
+A more colorful theme than the default  ¯\_(ツ)_/¯
+
 ![Screenshot unicorn Theme](/images/themes-unicorn.png)
+
+### Dalton
+
+A color-blind friendly theme contributed by [Tom Benevides](https://github.com/tombenevides).
+
+![Screenshot dalton Theme](/images/themes-dalton.png)
 
 !!! note
     Note: Colors will vary depending on your CLI and system colors.
