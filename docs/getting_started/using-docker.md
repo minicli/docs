@@ -27,6 +27,7 @@ docker-compose exec app minicli your-custom-command
 If you want to distribute your Minicli app with Docker, you can create a custom Docker image for that. You will need a Dockerfile and a entrypoint bash script. You can use the Dockerfile in the sandbox repository and just modify it or write your own. Below you will see the sandbox Dockerfile with the changes you need to make.
 
 The Dockerfile:
+
 ```Dockerfile
 FROM php:8-fpm
 
@@ -60,7 +61,7 @@ RUN mkdir -p /home/$user/.composer && \
 
 WORKDIR /home/$user
 
-COPY . /home/$user
+COPY .. /home/$user
 
 RUN chmod +x /home/$user/runner.sh
 
