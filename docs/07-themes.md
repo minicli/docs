@@ -61,7 +61,7 @@ The Unicorn Theme:
 
 The matching method calls for the output:
 
-```
+```php
       $app->getPrinter()->display("Hello World");
       $app->getPrinter()->error("Hello World");
       $app->getPrinter()->info("Hello World");
@@ -75,6 +75,6 @@ The matching method calls for the output:
       $app->getPrinter()->out("Hello World!\r\n", 'bold');
       $app->getPrinter()->out("Hello World!\r\n", 'inverted');
       $app->getPrinter()->out("Hello World!\r\n", 'italic');
-      ```
+ ```
 
 
