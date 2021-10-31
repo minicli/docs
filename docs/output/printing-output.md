@@ -1,4 +1,4 @@
-# Working with Output
+# Printing Output
 
 The `OutputHandler` service has a series of methods to enable advanced output features, such as printing with colors, printing with pre-defined styles, and outputting content to a file instead of the default output.
 
@@ -28,7 +28,7 @@ The following shortcut methods are available via the `OutputHandler` class:
 
 Example of output produced by these methods:
 
-![Screenshot output test](images/output_styles.png)
+![Screenshot output test](../images/output_styles.png)
 
 ### Other Print Methods
 
@@ -81,7 +81,7 @@ The `DefaultTheme` theme contains additional styles that can be used directly wi
 - `underline`
 - `inverted`
 
-![Screenshot of extended styles output](images/screenshot_extended_styles.png)
+![Screenshot of extended styles output](../images/screenshot_extended_styles.png)
 
 Usage example:
 

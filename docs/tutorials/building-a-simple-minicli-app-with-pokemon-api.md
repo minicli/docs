@@ -1,4 +1,7 @@
 # How to build a simple app pulling contents from Pokemon API
+
+_Tutorial author: [Simonarde Jr](https://github.com/simonardejr)_
+
 In this example, we are going to build a simple app to show some info about a chosen Pokemon.
 
 To get started, you'll need:

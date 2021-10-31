@@ -4,7 +4,7 @@ The [Minicli Demos](https://github.com/minicli/demos) repository contains demos 
 
 ### Basic Features Demo
 
-![Custom Table Demo Screenshot](images/screenshot_demo_table.png)
+![Custom Table Demo Screenshot](../images/screenshot_demo_table.png)
 
 The [Basic Features Demo](https://github.com/minicli/demos/tree/master/basic-features) shows how to print in various different styles, print tables, overwrite default theme styles and include custom styles of your own.
 
@@ -17,7 +17,7 @@ The [Basic Features Demo](https://github.com/minicli/demos/tree/master/basic-fea
 
 ### Custom Theme Demo
 
-![Custom Theme Demo Screenshot](images/screenshot_customtheme.png)
+![Custom Theme Demo Screenshot](../images/screenshot_customtheme.png)
 
 The [Custom Theme Demo](https://github.com/minicli/demos/tree/master/custom-theme) shows how to set up a custom theme with Minicli.
 

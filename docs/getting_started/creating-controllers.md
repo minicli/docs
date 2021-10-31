@@ -1,4 +1,4 @@
-# Namespaces and Controllers
+# Creating Command Controllers
 
 Command Namespaces were designed to create a simple command tree with multiple Command Controllers under a common entry point name. 
 It also enables autoloading of commands, by following a known directory/filename structure so you don't need to manually register commands when bootstrapping the application.

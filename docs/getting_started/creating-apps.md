@@ -1,4 +1,4 @@
-# Getting Started
+# Creating a new Minicli application
 
 Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies, and a single system requirement:
 

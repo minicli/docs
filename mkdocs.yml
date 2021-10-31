@@ -7,11 +7,16 @@ theme:
   icon:
     logo: material/console
     repo: fontawesome/brands/git-alt
+  features:
+    - navigation.sections
+    - toc.integrate
 repo_name: minicli/minicli
 repo_url: https://github.com/minicli/minicli
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
   - toc:
       permalink: true
