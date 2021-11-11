@@ -46,7 +46,7 @@ The following example shows a simple application with a single command registere
 #!/usr/bin/php
 <?php
 
-if($php_sapi_name !== 'cli') {
+if(php_sapi_name() !== 'cli') {
     exit;
 }
 
