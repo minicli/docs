@@ -10,12 +10,12 @@ jobs:
       - uses: actions/checkout@v2
       - uses: minicli/action-contributors@v3
         name: "Update a projects CONTRIBUTORS file"
+        env:
+          CONTRIB_REPOSITORY: 'minicli/docs'
+          CONTRIB_OUTPUT_FILE: 'CONTRIBUTORS.md'
       - name: Create a PR
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Update Contributors
           title: "[automated] Update Contributors File"
           token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          CONTRIB_REPOSITORY: 'minicli/docs'
-          CONTRIB_OUTPUT_FILE: 'CONTRIBUTORS.md'
