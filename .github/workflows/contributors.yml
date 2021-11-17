@@ -17,5 +17,5 @@ jobs:
           title: "[automated] Update Contributors File"
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          CONTRIB_REPOSITORY: 'minicli/minicli'
+          CONTRIB_REPOSITORY: 'minicli/docs'
           CONTRIB_OUTPUT_FILE: 'CONTRIBUTORS.md'
