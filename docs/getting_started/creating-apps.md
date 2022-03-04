@@ -2,7 +2,7 @@
 
 Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies, and a single system requirement:
 
-- PHP 7.3+ (cli)
+- PHP 8.0+ (cli)
 
 > Note: If you want to obtain user input, then the [`readline`](https://www.php.net/manual/en/function.readline.php) PHP extension is required as well.
 

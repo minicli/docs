@@ -8,7 +8,7 @@ This service is available at the application container as `printer`, also access
 ```php
 <?php
 ...
-    public function handle()
+    public function handle(): void
     {       
         $this->getPrinter()->display("Hello World!");
     }
@@ -54,7 +54,7 @@ Usage example:
 ```php
 <?php
 ...
-    public function handle()
+    public function handle(): void
     {   
         $this->getPrinter()->newline();    
         $this->getPrinter()->out("Hello World!", 'underline');

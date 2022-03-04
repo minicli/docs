@@ -97,7 +97,7 @@ use Minicli\Command\CommandController;
 
 class DefaultController extends CommandController
 {
-    public function handle()
+    public function handle(): void
     {       
         $this->getPrinter()->display("Hello World!");
     }
@@ -129,7 +129,7 @@ use Minicli\Command\CommandController;
 
 class CapsController extends CommandController
 {
-    public function handle()
+    public function handle(): void
     {       
         $this->getPrinter()->display("HELLO WORLD!");
     }

@@ -45,7 +45,7 @@ class FetchInfoController extends CommandController
 {
     public $baseApi = 'https://pokeapi.co/api/v2';
 
-    public function handle()
+    public function handle(): void
     {
         if( empty($this->hasParam('name')) ) {
             $this->getPrinter()->error("Please, inform the name of Pokemon you want to fetch info.");

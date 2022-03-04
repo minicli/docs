@@ -24,7 +24,7 @@ Both methods are used to work with parameters. In the next example, we check if 
 ```php
 <?php
 ...
-    public function handle()
+    public function handle(): void
     {       
         $name = "World";
         if ($this->hasParam('name')) {
@@ -44,7 +44,7 @@ Identifies if a flag has been set.
 ```php
 <?php
 ...
-    public function handle()
+    public function handle(): void
     {       
         $message = "Hello World";
         if ($this->hasFlag('shout')) {

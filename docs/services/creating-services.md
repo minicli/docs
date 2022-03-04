@@ -29,7 +29,7 @@ This service will be available from controllers via magic `__get` method:
 //A controller class 
 ...
 
-public function handle()
+public function handle(): void
 {
     $service = $this->getApp()->my-service;
     $service->doSomething();

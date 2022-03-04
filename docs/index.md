@@ -20,11 +20,13 @@
 
 Minicli is a minimalist, dependency-free framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output.
 
+The new version `3.0` is fully upgraded to support PHP 8+.
+
 ## Requirements
 
 What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested user-land dependencies. The basic `minicli/minicli` package has only **testing** dependencies (only installed when you clone Minicli for development), and a single system requirement:
 
-- PHP >= 7.3
+- PHP >= 8.0
 
 !!! note
     Note: If you want to obtain user input via prompts, then the [`readline`](https://www.php.net/manual/en/function.readline.php) PHP extension is required as well.
