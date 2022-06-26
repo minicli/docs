@@ -61,19 +61,19 @@ User-defined themes only need to define styles which will override those in the 
 
 When in doubt, stick to the default.
 
-![Screenshot default Theme](/images/themes-default.png)
+![Screenshot default Theme](../images/themes-default.png)
 
 ### Unicorn
 
 A more colorful theme than the default  ¯\_(ツ)_/¯
 
-![Screenshot unicorn Theme](/images/themes-unicorn.png)
+![Screenshot unicorn Theme](../images/themes-unicorn.png)
 
 ### Dalton
 
 A color-blind friendly theme contributed by [Tom Benevides](https://github.com/tombenevides).
 
-![Screenshot dalton Theme](/images/themes-dalton.png)
+![Screenshot dalton Theme](../images/themes-dalton.png)
 
 !!! note
     Note: Colors will vary depending on your CLI and system colors.
