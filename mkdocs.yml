@@ -2,8 +2,19 @@ site_name: Minicli
 theme:
   name: material
   palette:
-    primary: purple
-    accent: purple
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: purple
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: purple
+      accent: purple
+
   icon:
     logo: material/console
     repo: fontawesome/brands/git-alt
@@ -14,9 +25,38 @@ repo_name: minicli/minicli
 repo_url: https://github.com/minicli/minicli
 markdown_extensions:
   - admonition
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      linenums: true
   - pymdownx.superfences
   - pymdownx.snippets
   - toc:
       permalink: true
+nav:
+  - index.md
+  - 'Getting Started':
+      - getting_started/creating-apps.md
+      - getting_started/using-as-dependency.md
+      - getting_started/using-docker.md
+  - 'Minicli Commands':
+      - getting_started/creating-controllers.md
+      - sharing_commands/sharing-minicli-commands.md
+      - the_ecosystem/commands.md
+  - 'Input and Output':
+      - input/input-arguments.md
+      - input/user-input.md
+      - output/printing-output.md
+      - output/using-themes.md
+  - 'Advanced Usage':
+      - advanced/creating-services.md
+      - advanced/composer-bin.md
+      - advanced/github-action.md
+  - 'Minicli Ecosystem':
+      - the_ecosystem/curly.md
+      - the_ecosystem/stencil.md
+      - the_ecosystem/minicache.md
+  - 'Tutorials':
+      - tutorials_and_demos/building-a-simple-minicli-app-with-pokemon-api.md
+      - tutorials_and_demos/demos.md

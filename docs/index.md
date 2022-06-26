@@ -18,7 +18,7 @@
     </a>
 </p>
 
-Minicli is a minimalist, dependency-free framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output.
+Minicli is a minimalist, zero-dependency framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output to the terminal.
 
 Since version 3.0, Minicli requires PHP 8.
 
@@ -29,9 +29,8 @@ Since version 3.0, Minicli requires PHP 8.
 
 Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
 
-### No Built-in Dependencies
-What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested unknown user-land dependencies. 
-Minicli is committed to creating a safer software supply chain ecosystem, that's why we don't bring any chained dependencies with the base `minicli/minicli` package.
+### Zero Dependencies 
+Minicli is committed to creating a safer software supply chain ecosystem, that's why we don't bring any chained dependencies with the base `minicli/minicli` package. It contains everything you need to create a simple command-line PHP application to consume an API, generate some data, or just playing around with the command line in PHP-land.
 You can always opt to bootstrap your application with the `minicli/application` template repository, and you are encouraged to [share and reuse Minicli commands](/sharing_commands), but we believe that it should be completely up to you which packages you want your application to depend on.
 
 The base `minicli/minicli` package has only **testing** dependencies; these are only installed when you clone Minicli for development.
@@ -93,9 +92,9 @@ We welcome all types of contributions and contributors to Minicli and its adjace
 - discuss ideas before implementing something big
 - follow the [PSR-12](https://www.php-fig.org/psr/psr-12/) PHP code standards if you are contributing with code
 
-## Building Minicli
+## History
 
-The following tutorials on [dev.to](https://dev.to/erikaheidi) compose a series named "Building Minicli", where we created the first version of `minicli` from scratch:
+Minicli was initially created as an experiment about going dependency-free in the context of PHP. The following tutorials on [dev.to](https://dev.to/erikaheidi) compose a series named "Building Minicli", where we created the first version of `minicli` from scratch:
 
  - Part 1: [Bootstrapping a CLI PHP Application in Vanilla PHP](https://dev.to/erikaheidi/bootstrapping-a-cli-php-application-in-vanilla-php-4ee) [ [minicli v.0.1.0](https://github.com/erikaheidi/minicli/tree/0.1.0) ]
  - Part 2: [Building minicli: Implementing Command Controllers](https://dev.to/erikaheidi/php-in-the-command-line-implementing-command-controllers-13lh) [ [minicli v.0.1.2](https://github.com/erikaheidi/minicli/tree/0.1.2) ]
@@ -103,9 +102,9 @@ The following tutorials on [dev.to](https://dev.to/erikaheidi) compose a series 
  - Part 4: [Introducing minicli: a microframework for CLI-centric PHP applications](https://dev.to/erikaheidi/introducing-minicli-a-microframework-for-cli-centric-php-applications-44ik)
 
 !!! note
-    Minicli has evolved a lot since that series was initially written, with the help of many contributors. Thank you!
+    Minicli has evolved a lot since that series was initially written, with the help of many [contributors](https://github.com/minicli/minicli/blob/main/CONTRIBUTORS.md). Thank you!
 
-## Created with Minicli
+### Created with Minicli
 
 The following applications were created using Minicli:
 
