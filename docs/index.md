@@ -24,15 +24,21 @@ Since version 3.0, Minicli requires PHP 8.
 
 ## Requirements
 
-What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested user-land dependencies. The basic `minicli/minicli` package has only **testing** dependencies (only installed when you clone Minicli for development), and a single system requirement:
-
 - PHP >= 8.0
-
-!!! note
-    Note: If you want to obtain user input via prompts, then the [`readline`](https://www.php.net/manual/en/function.readline.php) PHP extension is required as well.
-
+- `ext-readline` to obtain user input
 
 Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
+
+### No Built-in Dependencies
+What does it mean to be dependency-free? It means that you can build a functional CLI PHP application without dozens of nested unknown user-land dependencies. 
+Minicli is committed to creating a safer software supply chain ecosystem, that's why we don't bring any chained dependencies with the base `minicli/minicli` package.
+You can always opt to bootstrap your application with the `minicli/application` template repository, and you are encouraged to [share and reuse Minicli commands](/sharing_commands), but we believe that it should be completely up to you which packages you want your application to depend on.
+
+The base `minicli/minicli` package has only **testing** dependencies; these are only installed when you clone Minicli for development.
+
+!!! note 
+    The [minicli/application](https://github.com/minicli/application) project template contains the skeleton of a more structured application including tests bootstrapped with [PestPHP](https://pestphp.com/) and a couple official Minicli commands such as the default [help command](https://github.com/minicli/command-help). 
+    For a dependency-free experience, you must require `minicli/minicli` from an existing project, and you'll have the freedom to create your own app structure.
 
 ## Installation
 
@@ -57,7 +63,9 @@ require __DIR__ . '/vendor/autoload.php';
 use Minicli\App;
 
 $app = new App([
-    'app_path' => __DIR__ . '/app/Command',
+    'app_path' => [
+        __DIR__ . '/app/Command',
+    ],
     'theme' => '\Unicorn', 
     'debug' => false,
 ]);
