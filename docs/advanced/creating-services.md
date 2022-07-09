@@ -8,7 +8,7 @@ A `load` method will be called the first time that service is requested.
 Built-in Services:
 
 - Config (registered as `config`)
-- CommandRegistry (registered as `command_registry`)
+- CommandRegistry (registered as `commandRegistry`)
 - OutputHandler (registered as `printer`)
 
 Registering a service:
