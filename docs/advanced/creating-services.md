@@ -19,7 +19,7 @@ Registering a service:
 $my_service = new MyService();
 
 $app = new App();
-$app->registerService('my-service', $my_service);
+$app->addService('my_service', $my_service);
 ```
 
 This service will be available from controllers via magic `__get` method:
@@ -31,7 +31,7 @@ This service will be available from controllers via magic `__get` method:
 
 public function handle(): void
 {
-    $service = $this->getApp()->my-service;
+    $service = $this->getApp()->my_service;
     $service->doSomething();
 }
 ```
