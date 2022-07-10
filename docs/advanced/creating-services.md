@@ -1,6 +1,6 @@
 # Creating and Registering Services
 
-The `App` class is a container that supports registering new services through the `registerService` method. You can create your own service by implementing the `ServiceInterface` interface.
+The `App` class is a container that supports registering new services through the `addService` method. You can create your own service by implementing the `ServiceInterface` interface.
 
 Services are *lazily loaded*, which means they'll only be loaded when requested from within the application.
 A `load` method will be called the first time that service is requested.
