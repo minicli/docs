@@ -123,7 +123,6 @@ In some cases, you'll want to have more flexibility on the output created, and y
 As the name suggests, the `TableHelper` is a utility class to format output as a table. This method can receive an array upon instantiation with the contents to be printed, but you can also build the table programmatically as in the following example:
 
 ```php
-<?php
 #!/usr/bin/env php
 <?php
 
@@ -150,7 +149,7 @@ $app->registerCommand('tables', function () use ($app) {
     $table->addHeader(['Header 1', 'Header 2', 'Header 3']);
 
     for($i = 1; $i <= 10; $i++) {
-        $table->addRow([$i, rand(0, 10), "other string $i"]);
+        $table->addRow([(string)$i, (string)rand(0, 10), "other string $i"]);
     }
 
     $app->getPrinter()->newline();
