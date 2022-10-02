@@ -19,7 +19,7 @@ Registering a service:
 $my_service = new MyService();
 
 $app = new App();
-$app->registerService('my-service', $my_service);
+$app->addService('my-service', $my_service);
 ```
 
 This service will be available from controllers via magic `__get` method:
