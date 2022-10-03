@@ -43,7 +43,7 @@ The base `minicli/minicli` package has only **testing** dependencies; these are 
 
 There are mainly two ways to get started: you can choose to create a project from scratch, which might be a good choice for single command apps or to integrate your command / app within another system, or you can use our application repository template, which sets up a minimal structure with Command Namespaces and Controllers - this is the recommended way if you're creating a new standalone command-line application with Minicli.
 
-Both methods are explained in detail in the [Getting Started Guide](/getting_started).
+Both methods are explained in detail in the [Getting Started Guide](/getting_started/creating-apps).
 
 ## Example Code
 
