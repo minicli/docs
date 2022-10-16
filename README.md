@@ -82,3 +82,21 @@ Then, install `mkdocs` and the `mkdocs-material` theme with:
 ```shell
 pip install mkdocs mkdocs-material
 ```
+
+#### using Docker
+
+You can use the provided Dockerfile to build a container that includes mkdocs and mkdocs-material, just follow the lines below.
+
+First, build the image using the following command from the project's root folder:
+```shell
+docker build -t mkd:v1 .
+```
+
+Then, run the server
+```shell
+docker run --rm -it -v "$(pwd)":/mkdocs/src -p 8080:8080 mkd:v1 mkdocs serve --dev-addr 0.0.0.0:8080
+```
+
+This command will block your terminal. Now, you can open `http://localhost:8080` on your browser. After making changes, you can simply reload the page to see your updates. When you are done, you can hit `CTRL+C` to stop serving the website.
+
+You don't need to run the `build` command, since that is automatically run by Readthedocs when the main branch has new commits.
