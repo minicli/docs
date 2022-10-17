@@ -51,8 +51,10 @@ nav:
       - output/using-themes.md
   - 'Advanced Usage':
       - advanced/creating-services.md
+      - advanced/config.md
       - advanced/composer-bin.md
       - advanced/github-action.md
+      - advanced/minicli-runtimes.md
   - 'Minicli Ecosystem':
       - the_ecosystem/curly.md
       - the_ecosystem/stencil.md
