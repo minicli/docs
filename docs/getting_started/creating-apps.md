@@ -2,7 +2,7 @@
 
 Minicli is a minimalist framework for building CLI-centric PHP applications. Minicli has no external package dependencies, and a single system requirement:
 
-- PHP 8.0+ (cli)
+- PHP 8.1+ (cli)
 
 > Note: If you want to obtain user input, then the [`readline`](https://www.php.net/manual/en/function.readline.php) PHP extension is required as well.
 
@@ -73,23 +73,31 @@ This will generate a directory structure like the following:
 
 ```
 .
-app
-└── Command
-    └── Help
-        ├── DefaultController.php
-        ├── TableController.php
-        └── TestController.php
+├── app
+│   └── Command
+│       └── Demo
+│           ├── DefaultController.php
+│           ├── TableController.php
+│           └── TestController.php
+├── tests
+│   ├── Feature
+│   │   └── Command
+│   │       └── DemoCommandTest.php
+│   ├── Helpers.php
+│   └── Pest.php
+├── vendor/
 ├── composer.json
-├── docs
+├── composer.lock
 ├── LICENSE
 ├── minicli
-├── mkdocs.yml
+├── phpunit.xml
 └── README.md
+
 
 ```
 
 Each directory inside `app/Command` represents a Command Namespace.
-The classes inside `app/Command/Help` represent subcommands that you can access through the main `help` command.
+The classes inside `app/Command/Demo` represent subcommands that you can access through the main `demo` command.
 
 You can now run the boostrapped application with:
 
@@ -100,24 +108,28 @@ cd myapp
 
 This will show you the default app signature.
 
-The `help` command that comes with the application template, defined in `app/Command/Help/DefaultController.php`, auto-generates a tree of available commands:
+You can use the included `help` command to see a list of available commands. This should exhibit also the application-defined commands, in this case, the "demo" command.
 
 ```shell
 ./minicli help
 ```
+```shell
 
-```
 Available Commands
 
-help
+demo
+└──table
 └──test
 
-```
-
-The `help test` command, defined in `app/Command/Help/TestController.php`, shows an echo test of parameters:
+help
 
 ```
-./minicli help test user=erika name=value
+The `demo` command that comes with the application template, has a couple subcommands to demonstrate Minicli usage with Command Controllers.
+
+The `demo test` command, defined in `app/Command/Demo/TestController.php`, shows an echo test of parameters:
+
+```
+./minicli demo test user=erika name=value
 ```
 
 ```
@@ -129,3 +141,27 @@ Array
     [name] => value
 )
 ```
+
+The `demo table` commands prints a table demo:
+
+```shell
+./minicli demo table
+```
+
+```shell
+Testing Tables
+
+Header 1  Header 2  Header 3        
+1         8         other string 1  
+2         10        other string 2  
+3         4         other string 3  
+4         6         other string 4  
+5         7         other string 5  
+6         5         other string 6  
+7         6         other string 7  
+8         10        other string 8  
+9         0         other string 9  
+10        1         other string 10 
+```
+
+Check out the [Creating Controllers](/getting_started/creating-controllers) section for more information about how command namespaces and controllers work.
