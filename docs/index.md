@@ -18,17 +18,17 @@
     </a>
 </p>
 
-Minicli is a minimalist, zero-dependency framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output to the terminal. Since version 3.0, Minicli requires PHP 8.
+Minicli is a minimalist, zero-dependency framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output to the terminal. Since version 4.0, Minicli requires PHP 8.1.
 
 ## Requirements
 
-- PHP >= 8.0
+- PHP >= 8.1
 - `ext-readline` to obtain user input
 
 Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
 
 ### Zero Dependencies 
-Minicli is committed to creating a safer software supply chain ecosystem, that's why we don't bring any chained dependencies with the base `minicli/minicli` package. Starting from version `3.2.0`, we also include [SBOM](https://en.wikipedia.org/wiki/Software_supply_chain) files with every release of Minicli. You can [download here](https://github.com/minicli/minicli/releases/download/3.2.0/sbom.spdx) our latest SBOM in SPDX format.
+Minicli is committed to creating a safer software supply chain ecosystem, that's why we don't bring any chained dependencies with the base `minicli/minicli` package. Starting from version `3.2.0`, we also include [SBOM](https://en.wikipedia.org/wiki/Software_supply_chain) files with every release of Minicli. You can [download here](https://github.com/minicli/minicli/releases/download/4.0.0/minicli-build.spdx.json) our latest SBOM in SPDX format.
 
 The base `minicli/minicli` package contains everything you need to create a simple command-line PHP application to consume an API, generate some data, or just playing around with the command line in PHP-land.
 You can always opt to bootstrap your application with the `minicli/application` template repository, and you are encouraged to [share and reuse Minicli commands](/sharing_commands), but we believe that it should be completely up to you which packages you want your application to depend on.
