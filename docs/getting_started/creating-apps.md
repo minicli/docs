@@ -165,3 +165,190 @@ Header 1  Header 2  Header 3
 ```
 
 Check out the [Creating Controllers](/getting_started/creating-controllers) section for more information about how command namespaces and controllers work.
+
+## Creating a Structured App Using MiniTerm
+
+**[MiniTerm](https://github.com/minicli/miniterm)** is a template based in the **Application Template** above but extended with:
+
+- [Termwind](https://github.com/nunomaduro/termwind) for creating beautiful CLI interfaces.
+- [Plates](https://github.com/thephpleague/plates) as a template engine.
+
+Create a new project with:
+
+```shell
+composer create-project --prefer-dist minicli/miniterm myapp
+```
+
+This will generate a directory structure like the following:
+
+```
+.
+├── app
+│   ├── Command
+│   │   ├── BaseController.php
+│   │   └── Demo
+│   │       ├── AskController.php
+│   │       ├── ColorController.php
+│   │       ├── DefaultController.php
+│   │       ├── TableController.php
+│   │       └── TestController.php
+│   ├── Config
+│   │   ├── TermwindOutputConfig.php
+│   │   └── TermwindOutputHandler.php
+│   ├── Services
+│   │   ├── PlatesServicec.php
+│   │   └── TermwindService.php
+│   └── Views
+│   │   └── table.php
+├── tests
+│   ├── Feature
+│   │   └── Command
+│   │       └── DemoCommandTest.php
+│   ├── Helpers.php
+│   └── Pest.php
+├── vendor/
+├── composer.json
+├── composer.lock
+├── LICENSE
+├── minicli
+├── pint.json
+├── phpunit.xml
+└── README.md
+
+
+```
+
+Each directory inside `app/Command` represents a Command Namespace.
+The classes inside `app/Command/Demo` represent subcommands that you can access through the main `demo` command.
+
+You can now run the boostrapped application with:
+
+```shell
+cd myapp
+./minicli
+```
+
+This will show you the default app signature.
+
+You can use the included `help` command to see a list of available commands. This should exhibit also the application-defined commands, in this case, the "demo" command.
+
+```shell
+./minicli help
+```
+```shell
+
+Available Commands
+
+demo
+└──ask
+└──color
+└──table
+└──test
+
+help
+
+```
+The `demo` command that comes with the application template, has a couple subcommands to demonstrate MiniTerm usage with Command Controllers.
+
+The `demo ask` command, defined in `app/Command/Demo/AskController.php`, shows how to ask for user input and render a message styled with Termwind:
+
+```shell
+./minicli demo ask
+```
+
+```shell
+What is your name? Erika
+
+Miniterm Hello, erika!
+```
+
+The `demo color` command, defined in `app/Command/Demo/ColorController.php`, shows how to render a message styled with Termwind using color helpers:
+
+```shell
+./minicli demo color
+```
+
+![Screenshot MiniTerm output](../images/miniterm-output.png)
+
+The `demo test` command, defined in `app/Command/Demo/TestController.php`, shows how to render a message styled with Termwind using param inputs:
+
+```
+./minicli demo test user=erika
+```
+
+```
+Miniterm Hello, erika!
+```
+
+The `demo table` commands prints a table demo using Plates to render a view file:
+
+```shell
+./minicli demo table
+```
+
+```shell
++----------+----------+-----------------+
+| Header 1 | Header 2 | Header 3        |
++----------+----------+-----------------+
+| 1        | 8        | other string 1  |
+| 2        | 6        | other string 2  |
+| 3        | 8        | other string 3  |
+| 4        | 2        | other string 4  |
+| 5        | 3        | other string 5  |
+| 6        | 8        | other string 6  |
+| 7        | 1        | other string 7  |
+| 8        | 0        | other string 8  |
+| 9        | 8        | other string 9  |
+| 10       | 3        | other string 10 |
++----------+----------+-----------------+
+```
+
+All your application commands should extend the `BaseController` class, which provides helper methods for rendering output with Termwind and Plates:
+
+- `render`: Used to render an HTML string using Termwind.
+- `style`: Used to add own custom styles and also update colors.
+- `ask`: Used to ask for user input.
+- `terminal`: returns an instance of the Terminal class, with the following methods:
+    - `width`: returns the full width of the terminal.
+    - `height`: returns the full height of the terminal.
+    - `clear`: clears the terminal.
+- `view`: Used to render a view file using Termwind and Plates.
+
+### Configuring the Output Styles
+
+You can configure the output styles by editing the `app/Config/TermwindOutputConfig.php` file.
+
+You can update the css classes in the `styles` method to change the appearance of the output.
+
+You can configure if you want to show labels for the commands and subcommands by updating the `enableLabels` method.
+When set to true the output will look like this:
+
+![Screenshot MiniTerm output with labels](../images/miniterm-output-labels.png)
+
+You can also configure which styles should display labels by updating the `stylesWithLabels` method.
+
+### Creating a View
+
+You can create a view file in the `app/Views` directory and use it in a command controller like this:
+
+```shell
+touch app/Views/hello.php
+```
+
+```html
+<p>Hello, <?= $name ?>!</p>
+```
+
+```php
+<?php
+
+class TableController extends BaseController
+{
+    public function handle(): void
+    {
+        $this->view('hello', [
+            'name' => 'Erika',
+        ]);
+    }
+}
+```
