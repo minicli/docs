@@ -1,6 +1,6 @@
 # About
 <p align="center">
-<img src="/images/logo/minicli_logo_term_pink.png" align="center" alt="logo" title="Minicli logo" alt="Minicli Logo" width="200">
+<img src="./images/logo/minicli_logo_term_pink.png" align="center" alt="logo" title="Minicli logo" alt="Minicli Logo" width="200">
 </p>
 
 <p align="center">

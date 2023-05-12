@@ -168,4 +168,4 @@ return 0;
 ```
 Once the table data is built with the `addRow()` method, you can use the `getFormattedTable()` method to obtain the raw content and output it using `rawOutput()`.
 
-![Output from default table printing method](/images/demo-table02.png)
+![Output from default table printing method](../images/demo-table02.png)
