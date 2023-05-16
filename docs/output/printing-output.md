@@ -2,7 +2,9 @@
 
 The `OutputHandler` service has a series of methods to enable advanced output features, such as printing with colors, printing with pre-defined styles, and outputting content to a file instead of the default output.
 
-This service is available at the application container as `printer`, also accessible via the helper method `getPrinter()` on controllers:
+This service is available at the application container as `printer`, also accessible via the helper method `getPrinter()` on controllers.
+
+You can call all the methods from the `OutputHandler` class directly in your application container or controllers as shown below (recommended):
 
 
 ```php

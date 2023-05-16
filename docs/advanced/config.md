@@ -3,9 +3,14 @@
 Minicli provides a confguration manager through the `Config` class. At the same time, the `Config` class is a **built-in service** (by implementing `ServiceInterface`) resgistered as a **service** when the `App`class is instanciated, allowing it to be used inside each command controller.
 
 ## Getting Configuration values
-It is expected fo any application to depend on configuration values. They can be provided by static files or even from environment variables. As long as the `App` instance is accessible, the entire configuration definition will be available and just like retrieving services from the `App` container, the configuration keys will be available via `__get` magic method:
+
+It is expected for any application to depend on configuration values. They can be provided by static files or even from environment variables. As long as the `App` instance is accessible, the entire configuration definition will be available and just like retrieving services from the `App` container, the configuration keys will be available via `__get` magic method:
 In the case of a certain configuration key is not set, `null` will be returned instead.
+
+In your controllers, you can access the configuration values via the `config` property:
+
 ### Command Controller Example
+
 ```php
 <?php
 namespace App\Command\Demo;
@@ -14,12 +19,13 @@ class ConfigExampleController extends CommandController
 {
     public function handle(): void
     {
-        $configValue = $this->getApp()->config->applicationEnvironment ;
+        $configValue = $this->config->applicationEnvironment ;
     }
 }
 ```
 
 ### Service class example
+
 ```php
 <?php
 namespace App\Services;
@@ -38,7 +44,9 @@ class ExampleService implements ServiceInterface
 ```
 
 ## Check if configuration exists via `has` method
+
 As mentioned, if the configuration name does not exists, then null will be returned. When it is required to validate if a configuration key exists, the `has()` method is the right one.
+
 ```php
 ...
     if($app->config->has('customKey') {
@@ -48,8 +56,11 @@ As mentioned, if the configuration name does not exists, then null will be retur
 ```
 
 ## Setting configuration values
+
 ### When instanciating `App`
+
 An `array`of configuration values can be defined when instanciating the `App` class, given that its `__construct` will use it to create the `Config` service and add it to the app container.
+
 ```php
 ...
 $configs = [
@@ -59,9 +70,12 @@ $configs = [
 
 $app = new App($configs);
 ```
+
 ### Custom configuration from external sources
+
 Another approach is using the magic `__set()` method from the `Config` class to add configuration values.
 Consider the scenario in which configs are available on `environment variables` or in a `json` file:
+
 ```php title='Reading configurations from external sources'
 // code from your minicli file ...
 $app = new App([
@@ -80,6 +94,7 @@ foreach ($parsedContent as $name => $value) {
 }
 // code continues ...
 ```
+
 ```json title='configs.json file example from the previous code block'
 {
     "api_url": "https://api.minicli.dev",

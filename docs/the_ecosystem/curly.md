@@ -39,7 +39,7 @@ $app->registerCommand('devto', function () use ($app) {
     $articles_response = $crawler->get('https://dev.to/api/articles?username=DEVUSERNAME');
 
     if ($articles_response['code'] !== 200) {
-        $app->getPrinter->error('Error while contacting the dev.to API.');
+        $app->error('Error while contacting the dev.to API.');
         return 1;
     }
 
