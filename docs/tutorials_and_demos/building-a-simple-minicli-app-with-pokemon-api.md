@@ -48,14 +48,14 @@ class FetchInfoController extends CommandController
     public function handle(): void
     {
         if( empty($this->hasParam('name')) ) {
-            $this->getPrinter()->error("Please, inform the name of Pokemon you want to fetch info.");
-            $this->getPrinter()->error("Usage: ./minicli pokemon fetchinfo name=\"bulbasaur\"");
+            $this->error("Please, inform the name of Pokemon you want to fetch info.");
+            $this->error("Usage: ./minicli pokemon fetchinfo name=\"bulbasaur\"");
             return;
         }
 
         $name = $this->getParam('name');
 
-        $this->getPrinter()->display('Showing info about ' . $name);
+        $this->display('Showing info about ' . $name);
 
         $this->fetchPokemonInfo($name);
 
@@ -134,8 +134,8 @@ public function printPokemonTableInfo($info)
         $table->addRow([str_replace('-', ' ', $item['move']['name'])]);
     }, $info['moves']);
 
-    $this->getPrinter()->rawOutput($table->getFormattedTable(new ColorOutputFilter()));
-    $this->getPrinter()->newline();
+    $this->rawOutput($table->getFormattedTable(new ColorOutputFilter()));
+    $this->newline();
 }
 ```
 If you run `fetchinfo` command again, you will notice that the info will not be shown to us. That's because we have implemented the `printPokemonTableInfo`, but we are not calling it. Let's call it then:

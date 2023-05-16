@@ -33,7 +33,7 @@ $app = new App([
 ]);
 
 $app->registerCommand('devto', function () use ($app) {
-    $app->getPrinter()->display('Fetching from DEV...');
+    $app->display('Fetching from DEV...');
     $crawler = new Client();
 
     $articles_response = $crawler->get('https://dev.to/api/articles?username=DEVUSERNAME');
@@ -48,14 +48,14 @@ $app->registerCommand('devto', function () use ($app) {
     foreach($articles as $article) {
         $table[] = [$article['title'], $article['positive_reactions_count']];
     }
-    $app->getPrinter()->printTable($table);
+    $app->printTable($table);
     return 0;
 });
 
 try {
     $app->runCommand($argv);
 } catch (CommandNotFoundException $notFoundException) {
-    $app->getPrinter()->error("Command Not Found.");
+    $app->error("Command Not Found.");
     return 1;
 }
 

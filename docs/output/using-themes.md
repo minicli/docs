@@ -107,30 +107,30 @@ $app = new App([
 ]);
 
 $app->registerCommand('test', function () use ($app) {
-    $app->getPrinter()->display("Hello World");
-    $app->getPrinter()->error("Hello World");
-    $app->getPrinter()->info("Hello World");
-    $app->getPrinter()->success("Hello World");
-    $app->getPrinter()->display("Hello World",true);
-    $app->getPrinter()->error("Hello World",true);
-    $app->getPrinter()->info("Hello World",true);
-    $app->getPrinter()->success("Hello World",true);
-    $app->getPrinter()->out("Hello World!\r\n", 'underline');
-    $app->getPrinter()->out("Hello World!\r\n", 'dim');
-    $app->getPrinter()->out("Hello World!\r\n", 'bold');
-    $app->getPrinter()->out("Hello World!\r\n", 'inverted');
-    $app->getPrinter()->out("Hello World!\r\n", 'italic');
+    $app->display("Hello World");
+    $app->error("Hello World");
+    $app->info("Hello World");
+    $app->success("Hello World");
+    $app->display("Hello World",true);
+    $app->error("Hello World",true);
+    $app->info("Hello World",true);
+    $app->success("Hello World",true);
+    $app->out("Hello World!\r\n", 'underline');
+    $app->out("Hello World!\r\n", 'dim');
+    $app->out("Hello World!\r\n", 'bold');
+    $app->out("Hello World!\r\n", 'inverted');
+    $app->out("Hello World!\r\n", 'italic');
 });
 
 try {
     $app->runCommand($argv);
 } catch (CommandNotFoundException $notFoundException) {
-    $app->getPrinter()->error("Command Not Found.");
+    $app->error("Command Not Found.");
     return 1;
 } catch (Exception $exception) {
     if ($app->config->debug) {
-        $app->getPrinter()->error("An error occurred:");
-        $app->getPrinter()->error($exception->getMessage());
+        $app->error("An error occurred:");
+        $app->error($exception->getMessage());
     }
     return 1;
 }

@@ -10,7 +10,7 @@ This service is available at the application container as `printer`, also access
 ...
     public function handle(): void
     {       
-        $this->getPrinter()->display("Hello World!");
+        $this->display("Hello World!");
     }
 ```
 
@@ -56,9 +56,9 @@ Usage example:
 ...
     public function handle(): void
     {   
-        $this->getPrinter()->newline();    
-        $this->getPrinter()->out("Hello World!", 'underline');
-        $this->getPrinter()->newline(); 
+        $this->newline();    
+        $this->out("Hello World!", 'underline');
+        $this->newline(); 
     }
 ```
 
@@ -92,7 +92,7 @@ $app = new App([
 ]);
 
 $app->registerCommand('tables', function () use ($app) {
-    $app->getPrinter()->display('Testing Tables');
+    $app->display('Testing Tables');
 
     $content = [
         ['name', 'age', 'city'],
@@ -101,13 +101,13 @@ $app->registerCommand('tables', function () use ($app) {
         ['Bob', 39, 'New York'],
         ['Johnny', 28, 'Lagos']
     ];
-    $app->getPrinter()->printTable($content);
+    $app->printTable($content);
 });
 
 try {
     $app->runCommand($argv);
 } catch (CommandNotFoundException $notFoundException) {
-    $app->getPrinter()->error("Command Not Found.");
+    $app->error("Command Not Found.");
     return 1;
 }
 
@@ -143,7 +143,7 @@ $app = new App([
 ]);
 
 $app->registerCommand('tables', function () use ($app) {
-    $app->getPrinter()->display('Testing Tables');
+    $app->display('Testing Tables');
 
     $table = new TableHelper();
     $table->addHeader(['Header 1', 'Header 2', 'Header 3']);
@@ -152,15 +152,15 @@ $app->registerCommand('tables', function () use ($app) {
         $table->addRow([(string)$i, (string)rand(0, 10), "other string $i"]);
     }
 
-    $app->getPrinter()->newline();
-    $app->getPrinter()->rawOutput($table->getFormattedTable(new ColorOutputFilter()));
-    $app->getPrinter()->newline();
+    $app->newline();
+    $app->rawOutput($table->getFormattedTable(new ColorOutputFilter()));
+    $app->newline();
 });
 
 try {
     $app->runCommand($argv);
 } catch (CommandNotFoundException $notFoundException) {
-    $app->getPrinter()->error("Command Not Found.");
+    $app->error("Command Not Found.");
     return 1;
 }
 

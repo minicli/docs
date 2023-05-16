@@ -30,7 +30,7 @@ Both methods are used to work with parameters. In the next example, we check if 
         if ($this->hasParam('name')) {
             $name = $this->getParam('name');
         }  
-        $this->getPrinter()->display("Hello $name!");
+        $this->display("Hello $name!");
     }
 ```
 
@@ -51,6 +51,6 @@ Identifies if a flag has been set.
             $message = strtoupper($message);
         }
 
-        $this->getPrinter()->display($message);
+        $this->display($message);
     }
 ```
