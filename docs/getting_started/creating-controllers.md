@@ -99,7 +99,7 @@ class DefaultController extends CommandController
 {
     public function handle(): void
     {       
-        $this->getPrinter()->display("Hello World!");
+        $this->display("Hello World!");
     }
 }
 ```
@@ -131,7 +131,7 @@ class CapsController extends CommandController
 {
     public function handle(): void
     {       
-        $this->getPrinter()->display("HELLO WORLD!");
+        $this->display("HELLO WORLD!");
     }
 }
 ```

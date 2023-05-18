@@ -70,9 +70,9 @@ $app = new App([
 ]);
 
 $app->registerCommand('test', function () use ($app) {
-    $app->getPrinter()->success('Hello World!' , false);
-    $app->getPrinter()->info('With Background!' , true);
-    $app->getPrinter()->error('Quitting!', false);
+    $app->success('Hello World!' , false);
+    $app->info('With Background!' , true);
+    $app->error('Quitting!', false);
 });
 
 $app->runCommand($argv);
