@@ -2,7 +2,7 @@
 
 Minicli commands use the following structure and nomenclature for commands and arguments:
 
-```
+```shell
 ./minicli command subcommand param1=value1 param2=value2 --flag1 --flag2
 ```
 
@@ -17,6 +17,7 @@ The controller surfaces several methods to obtain the parameters used to call th
 ## getArgs(): array
 
 Obtains all arguments included in the command call. This will return the contents obtained via the `$argv[]` global variable, where position `0` corresponds to the script name, and the following items are each command argument.
+
 ## hasParam(): bool, getParam(): string
 
 Both methods are used to work with parameters. In the next example, we check if a parameter was set, then adjust the output accordingly:
@@ -36,7 +37,6 @@ Both methods are used to work with parameters. In the next example, we check if 
 
 To print a customized "Hello" message, you'd include `name=myname` as additional command call argument when running your app.
 
-
 ## hasFlag(): bool
 
 Identifies if a flag has been set.
@@ -53,4 +53,29 @@ Identifies if a flag has been set.
 
         $this->display($message);
     }
+```
+
+## Defining Required Parameters
+
+You can define required parameters for your command by implementing the `required` method in your command class:
+
+```php
+<?php
+...
+    public function handle(): void
+    {
+        $name = $this->getParam('name');
+        $this->display("Hello $name!");
+    }
+
+    public function required(): array
+    {
+        return ['name'];
+    }
+```
+
+If the required parameter is not provided when calling the command, an error message will be displayed:
+
+```
+Missing required parameter(s): name
 ```
