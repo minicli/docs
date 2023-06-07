@@ -57,7 +57,7 @@ As mentioned, if the configuration name does not exists, then null will be retur
 
 ## Setting configuration values
 
-### When instanciating `App`
+### When instantiating `App` (deprecated - Use method below)
 
 An `array`of configuration values can be defined when instanciating the `App` class, given that its `__construct` will use it to create the `Config` service and add it to the app container.
 
@@ -71,33 +71,32 @@ $configs = [
 $app = new App($configs);
 ```
 
-### Custom configuration from external sources
+### Using config files
 
-Another approach is using the magic `__set()` method from the `Config` class to add configuration values.
-Consider the scenario in which configs are available on `environment variables` or in a `json` file:
+In the root of your project, create a `config` folder (if you're using any of our official templates this is already done for you).
 
-```php title='Reading configurations from external sources'
-// code from your minicli file ...
-$app = new App([
-    ...
-]);
+You can create multiple files to organize your configuration values. For example, you can create a `database.php` file to store your database connection information.
 
-/* Adding configs using env vars */
-$app->config->db_host = getenv('ENV_VAR_NAME');
+Each of these files must return an array of configuration values. For example:
 
-/* Adding configs using json files */
-$externalJSONContent = file_get_contents(__DIR__ . '/configs.json');
-$parsedContent = json_decode($externalJSONContent);
+```php
+// database.php
 
-foreach ($parsedContent as $name => $value) {
-    $app->config->$name = $value;
-}
-// code continues ...
+return [
+    'db_host' => 'localhost',
+    'db_port' => 3306,
+    'db_database' => 'myapp',
+    'db_user' => 'myuser',
+    'db_password' => 'secret',
+];
 ```
 
-```json title='configs.json file example from the previous code block'
-{
-    "api_url": "https://api.minicli.dev",
-    "api_version": "1.2"
-}
+All these configurations will be available via the `config` property of the `App` instance or in the `config` property of your command controllers.
+
+```php
+// somewhere in your code
+$app->config->db_host; // localhost
+
+// or in your command controller
+$this->config->db_host; // localhost
 ```
