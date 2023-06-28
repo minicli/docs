@@ -52,6 +52,7 @@ nav:
   - 'Advanced Usage':
       - advanced/creating-services.md
       - advanced/config.md
+      - advanced/logging.md
       - advanced/composer-bin.md
       - advanced/github-action.md
       - advanced/minicli-runtimes.md
