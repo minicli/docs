@@ -31,7 +31,7 @@ Apart from that, you'll need [Composer](https://getcomposer.org/) to install and
 Minicli is committed to creating a safer software supply chain ecosystem, that's why we don't bring any chained dependencies with the base `minicli/minicli` package. Starting from version `3.2.0`, we also include [SBOM](https://en.wikipedia.org/wiki/Software_supply_chain) files with every release of Minicli. You can [download here](https://github.com/minicli/minicli/releases/download/4.0.0/minicli-build.spdx.json) our latest SBOM in SPDX format.
 
 The base `minicli/minicli` package contains everything you need to create a simple command-line PHP application to consume an API, generate some data, or just playing around with the command line in PHP-land.
-You can always opt to bootstrap your application with the `minicli/application` template repository, and you are encouraged to [share and reuse Minicli commands](/sharing_commands), but we believe that it should be completely up to you which packages you want your application to depend on.
+You can always opt to bootstrap your application with the `minicli/application` template repository, and you are encouraged to [share and reuse Minicli commands](/sharing_commands/sharing-minicli-commands/), but we believe that it should be completely up to you which packages you want your application to depend on.
 
 The base `minicli/minicli` package has only **testing** dependencies; these are only installed when you clone Minicli for development.
 
