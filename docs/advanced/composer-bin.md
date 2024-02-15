@@ -25,6 +25,12 @@ require $root_app . '/vendor/autoload.php';
 $app = new App();
 //code continues...
 ```
+If you are running your minicli app as a dependency of a larger project. e.g. A Laravel Project, set the app root as the location of your CLI like so:
+
+```php
+$app = new App(appRoot: dirname(__DIR__, 1));
+```
+
 
 With your script ready, edit the project's `composer.json` file to include `minicli` in your `bin` section:
 
