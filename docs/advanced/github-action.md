@@ -14,7 +14,7 @@ Both files must live in the root of your GitHub Action repository.
 This is what a Dockerfile from a functional Minicli GitHub Action looks like:
 
 ```dockerfile
-FROM php:8.1-cli
+FROM php:8.3-cli
 
 RUN apt-get update && apt-get install -y \
     git \
