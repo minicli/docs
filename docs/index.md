@@ -18,11 +18,11 @@
     </a>
 </p>
 
-Minicli is a minimalist, zero-dependency framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output to the terminal. Since version 4.0, Minicli requires PHP 8.1.
+Minicli is a minimalist, zero-dependency framework for building CLI-centric PHP applications. It provides a structured way to organize your commands, as well as various helpers to facilitate working with command arguments, obtaining input from users, and printing colored output to the terminal. Since version 4.2.1, Minicli requires PHP 8.2.
 
 ## Requirements
 
-- PHP >= 8.1
+- PHP >= 8.2
 - `ext-readline` to obtain user input
 
 Apart from that, you'll need [Composer](https://getcomposer.org/) to install and use Minicli.
